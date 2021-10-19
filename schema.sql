@@ -1,7 +1,14 @@
+DROP DATABASE IF EXISTS employee_db;
+CREATE DATABASE employee_db
+
 -- TO DO: create the following three tables
 -- Department table
     -- id: INT PRIMARY KEY
     -- name: VARCHAR (30)
+CREATE TABLE department (
+    id INT NOT NULL,
+    name VARCHAR (30)
+);
 -- Role
     -- id: INT PRIMARY KEY
     -- title: VARCHAR (30)
