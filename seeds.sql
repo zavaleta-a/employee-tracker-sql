@@ -20,14 +20,14 @@ VALUE (null, "Parker", "Peter", 4),
 VALUE (null, "Brown", "Ken", 4),
 
       
-INSERT INTO employee (last_name, first_name, manager_id, role_id)
-VALUE ("Brown", "Ken", null, 3);
-INSERT INTO employee (last_name, first_name, manager_id, role_id)
-VALUE ("Parker", "Peter", null, 2);
-INSERT INTO employee (last_name, first_name, manager_id, role_id)
-VALUE ("Morgan", "Dexter", null, 1);
-INSERT INTO employee (last_name, first_name, manager_id, role_id)
-VALUE ("Chan", "Jackie", 0101, 4);
+-- INSERT INTO employee (last_name, first_name, manager_id, role_id)
+-- VALUE ("Brown", "Ken", null, 3);
+-- INSERT INTO employee (last_name, first_name, manager_id, role_id)
+-- VALUE ("Parker", "Peter", null, 2);
+-- INSERT INTO employee (last_name, first_name, manager_id, role_id)
+-- VALUE ("Morgan", "Dexter", null, 1);
+-- INSERT INTO employee (last_name, first_name, manager_id, role_id)
+-- VALUE ("Chan", "Jackie", 0101, 4);
 
 -- Employee Role Seeds
 INSERT INTO role (title, salary, department_id)

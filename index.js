@@ -12,8 +12,8 @@ const connection = mysql.createConnection(
   {
     host: "localhost",
     port: 3306,
-    user: "root",
-    password: "password", // remember to add your password here. hide it!
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD, // remember to add your password here. hide it!
     database: "employee_db",
   },
   console.log("Connected to DB!")
@@ -83,8 +83,22 @@ const viewAllEmployees = () => {
     "SELECT employee.last_name, employee.first_name, role.title AS Title FROM employee JOIN role ON employee.role_id = role_id;"
     (err, res) = () => {
         if (err) throw err 
-        console.log ("Error!")
+        console.log ("Cannot view employees!")
         startPrompt()
     }
     );
 };
+
+// View All Roles
+const viewAllRoles = () => {
+    connection.query(
+        "SELECT employee.last_name, employee.first_name, role.title AS Title FROM employee JOIN role ON employee.role_id = role.id;"
+        (err, res) = () => {
+            if (err) throw err
+            console.log("Cannot read roles!")
+            startPrompt()
+        }
+    )
+}
+
+startPrompt();
