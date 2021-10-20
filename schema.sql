@@ -1,12 +1,14 @@
 DROP DATABASE IF EXISTS employee_db;
-CREATE DATABASE employee_db
+CREATE DATABASE employee_db;
+
+USE employee_db;
 
 -- TO DO: create the following three tables
 -- Department table
     -- id: INT PRIMARY KEY
     -- name: VARCHAR (30)
 CREATE TABLE department (
-    id INT NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR (30)
 );
 -- Role
@@ -15,10 +17,11 @@ CREATE TABLE department (
     -- salary: DECIMAL
     -- department_id: INT
 CREATE TABLE role (
-    id: INT NOT NULL PRIMARY KEY,
-    title: VARCHAR (30),
-    salary: DECIMAL,
-    department_id: INT
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR (30),
+    salary DECIMAL,
+    department_id INT,
+    FOREIGN KEY (department_id)REFERENCES department(id)
 );
 -- Employee
     -- id: INT PRIMARY KEY
@@ -27,10 +30,10 @@ CREATE TABLE role (
     -- role_id: INT
     -- manager_id: INT (null if the employee has no manager)
 CREATE TABLE employee (
-    id: INT PRIMARY KEY,
-    first_name: VARCHAR (30),
-    last_name: VARCHAR (30),
-    role_id: INT
+    id INT PRIMARY KEY,
+    first_name VARCHAR (30),
+    last_name VARCHAR (30),
+    role_id INT
 )
 -- Might want to include a seeds.sql
 -- Might want to use seperate file that contains functions for performing specific SQL queries you'll need to use.
