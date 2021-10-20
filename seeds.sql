@@ -1,3 +1,7 @@
+SELECT * FROM department;
+SELECT * FROM role;
+SELECT * FROM employee;
+
 -- Department Seeds
 INSERT INTO department (name)
 VALUE ("Sales");
@@ -9,8 +13,13 @@ INSERT INTO department (name)
 VALUE ("Rooms");
 
 -- Employee Seeds
-INSERT INTO employee (last_name, first_name, manager_id, role_id)
-VALUE ("Wilson", "Christine", 0102, 4);
+INSERT INTO employee (manager_id, last_name, first_name, role_id)
+VALUE (0101, "Chan", "Jackie", 4),
+VALUE (0102, "Wilson", "Christine", 4),
+VALUE (null, "Parker", "Peter", 4),
+VALUE (null, "Brown", "Ken", 4),
+
+      
 INSERT INTO employee (last_name, first_name, manager_id, role_id)
 VALUE ("Brown", "Ken", null, 3);
 INSERT INTO employee (last_name, first_name, manager_id, role_id)
