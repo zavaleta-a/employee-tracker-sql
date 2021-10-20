@@ -21,8 +21,10 @@ const connection = mysql.createConnection(
 // Make a list to ask what the user would like to do
 // Choices: View all employees, add employee, update employee,
 // view all roles, add role, view all departments, add department, and quit
-//
-function startPrompt() {
+// Need function to add employee, department, and employee role
+// Need to be able to update employee
+
+const startPrompt = () => {
   inquirer.prompt([
     {
       type: "list",
@@ -38,5 +40,29 @@ function startPrompt() {
         "Quit",
       ],
     },
-  ]);
+  ])
+  .then((const) => {
+      switch (const.choice) {
+        case "View all employees?":
+            viewAllEmployees();
+        break;
+  
+        case "View all employees by role?":
+            viewAllRoles();
+        break;
+
+        case "View all Employees by department?":
+            break;
+        
+        case "Add employee?":
+            addEmployee();
+            break;
+
+
+      }
+    
+
+    
+
+  })
 }
