@@ -1,15 +1,17 @@
-// Need to use MySQL2 package
+// Setup
 const mysql = require("mysql2");
-// Need inquirer
 const inquirer = require("inquirer");
 // console.table package needed to print MySQL rows to console
 const consTable = require("console.table");
+// Sequelize
+const Sequelize = require("sequelize");
+require("dotenv").config();
 
 // Connection ID
 const connection = mysql.createConnection(
   {
     host: "localhost",
-    port: 3301,
+    port: 3306,
     user: "root",
     password: "password", // remember to add your password here. hide it!
     database: "employee_db",
@@ -18,10 +20,7 @@ const connection = mysql.createConnection(
 );
 
 // Prompt
-// Make a list to ask what the user would like to do
-// Choices: View all employees, add employee, update employee,
-// view all roles, add role, view all departments, add department, and quit
-// Need function to add employee, department, and employee role
+
 // Need to be able to update employee
 
 const startPrompt = () => {
@@ -76,4 +75,16 @@ const startPrompt = () => {
           break;
       }
     });
+};
+
+// View All Employees
+const viewAllEmployees = () => {
+  connection.query(
+    "SELECT employee.last_name, employee.first_name, role.title AS Title FROM employee JOIN role ON employee.role_id = role_id;"
+    (err, res) = () => {
+        if (err) throw err 
+        console.log ("Error!")
+        startPrompt()
+    }
+    );
 };
