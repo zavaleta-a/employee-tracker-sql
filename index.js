@@ -25,44 +25,55 @@ const connection = mysql.createConnection(
 // Need to be able to update employee
 
 const startPrompt = () => {
-  inquirer.prompt([
-    {
-      type: "list",
-      name: "choices",
-      choices: [
-        "View all employees",
-        "Add employee",
-        "Update employee",
-        "View all roles",
-        "Add role",
-        "View all departments",
-        "Add department",
-        "Quit",
-      ],
-    },
-  ])
-  .then((const) => {
-      switch (const.choice) {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "choices",
+        choices: [
+          "View all employees",
+          "Add employee",
+          "Update employee",
+          "View all roles",
+          "Add role",
+          "View all departments",
+          "Add department",
+          "Quit",
+        ],
+      },
+    ])
+    .then(function (value) {
+      switch (value.choice) {
         case "View all employees?":
-            viewAllEmployees();
-        break;
-  
+          viewAllEmployees();
+          break;
+
         case "View all employees by role?":
-            viewAllRoles();
-        break;
+          viewAllRoles();
+          break;
 
         case "View all Employees by department?":
-            break;
-        
+          break;
+
         case "Add employee?":
-            addEmployee();
-            break;
+          addEmployee();
+          break;
 
+        case "Add Role?":
+          addRole();
+          break;
 
+        case "Add department?":
+          addDepartment();
+          break;
+
+        case "Update employee?":
+          updateEmployee();
+          break;
+
+        case "Quit":
+          connection.end();
+          break;
       }
-    
-
-    
-
-  })
-}
+    });
+};
