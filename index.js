@@ -99,6 +99,46 @@ const viewAllRoles = () => {
             startPrompt()
         }
     )
+};
+
+// View All Departments
+const viewAllDepartments = () => {
+    connection.query(
+        "SELECT employee.last_name, employee.first_name, role.title AS Department FROM employee JOIN role ON employee.role_id = role.id;"
+        (err,res) = () => {
+            if (err) throw err
+            console.log("Cannot view departments!")
+            startPrompt()
+        }
+    )
+}
+
+// Add Employee
+const addEmployee = () => {
+    inquirer.prompt([
+       {
+           name: "lastname",
+           type: "input",
+           message: "Enter employee's last name"
+       },
+       {
+           name: "firstname",
+           type: "input",
+           message: "Enter employee's first name"  
+       }, 
+       {
+           name: "role",
+           type: "list",
+           message: "What is the employee's role?",
+           choices: selectRole()
+       }, 
+       {
+           name: "choice",
+           type: "list",
+           message: "What's their manager's name?",
+           choice: selectManager()
+       }, 
+    ])
 }
 
 startPrompt();
